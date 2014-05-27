@@ -39,7 +39,7 @@ module Split
       end
 
       if block_given?
-        if defined?(capture) # a block in a rails view
+        if defined?(Rails) && defined?(capture) # a block in a rails view
           block = Proc.new { yield(ret) }
           concat(capture(ret, &block))
           false
